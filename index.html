@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="visor" disabled placeholder="0">
+
+        <div class="linha">
+            <button class="btn-zera" onclick="calcular('acao', 'c')">C</button>
+            <button onclick="calcular('acao', ' / ')"> / </button>
+            <button onclick="calcular('acao', ' * ')"> X </button>
+        </div>
+
+        <div class="linha">
+            <button onclick="calcular('valor', 7)">7</button>
+            <button onclick="calcular('valor', 8)">8</button>
+            <button onclick="calcular('valor', 9)">9</button>
+            <button onclick="calcular('acao', ' - ')">-</button>
+        </div>
+        <div class="linha">
+            <button onclick="calcular('valor', 4)">4</button>
+            <button onclick="calcular('valor', 5)">5</button>
+            <button onclick="calcular('valor', 6)">6</button>
+            <button onclick="calcular('acao', ' + ')">+</button>
+        </div>
+        <div class="linha">
+            <button onclick="calcular('valor', 1)">1</button>
+            <button onclick="calcular('valor', 2)">2</button>
+            <button onclick="calcular('valor', 3)">3</button>
+            <button onclick="calcular('acao', '.')">.</button>
+        </div>
+        <div class="linha">
+            <button class="btn-zero" onclick="calcular('valor', 0)">0</button>
+            <button class="btn-zero" onclick="calcular('acao', '=')">=</button>
+        </div>
+    </div>
+
+    <script>
+        function calcular (tipo, valor) {
+
+            // Adiciona os valores digitados no visor
+            if (tipo == "valor") {
+                document.getElementById('visor').value += valor
+
+            }else if (tipo == "acao") {
+                // Realiza as operações matemáticas
+                if (valor == " + " || valor == " - " || valor == " * " || valor == " / " || valor == ".") {
+                    document.getElementById('visor').value += valor
+
+                // Limpa o visor
+                }else if (valor == "c") {
+                    document.getElementById('visor').value = ""
+
+                // Mostra o resultado das operações
+                }else if (valor == "=") {
+                    var valorVisor = eval(document.getElementById('visor').value)
+                    document.getElementById('visor').value = valorVisor
+                }
+            }
+        }
+    </script>
+</body>
+</html>
