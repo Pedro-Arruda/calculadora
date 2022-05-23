@@ -11,6 +11,7 @@
 </h2>
 
 <div>
+	<img src = "gifCalculadora.gif">
 
 </div>
 
